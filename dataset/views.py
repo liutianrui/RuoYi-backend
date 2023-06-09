@@ -42,7 +42,9 @@ class CrudDemoModelViewSet(CustomModelViewSet):
 
     # 模型训练
     def trainDataSet(self, request):
-        Rf_Classifier_Plus.classify()
+        # file = self.initial_data.get('file')
+        file = request.data.get('file')
+        Rf_Classifier_Plus.classify(file)
         return SuccessResponse(data=[], msg="模型训练成功")
 
 

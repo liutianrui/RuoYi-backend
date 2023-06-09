@@ -65,20 +65,35 @@ def test_set(filepath):
     LABEL4 = 0
     LABEL5 = 0
 
+    # 修改预测的label数量统计
     while jtem < length_test:
-        if 0 == y_rf_test.values[jtem]:
+        if 0 == y_rf_pred[jtem]:
             LABEL0 += 1
-        elif 1 == y_rf_test.values[jtem]:
+        elif 1 == y_rf_pred[jtem]:
             LABEL1 += 1
-        elif 2 == y_rf_test.values[jtem]:
+        elif 2 == y_rf_pred[jtem]:
             LABEL2 += 1
-        elif 3 == y_rf_test.values[jtem]:
+        elif 3 == y_rf_pred[jtem]:
             LABEL3 += 1
-        elif 4 == y_rf_test.values[jtem]:
+        elif 4 == y_rf_pred[jtem]:
             LABEL4 += 1
         else:
             LABEL5 += 1
         jtem += 1
+        # while jtem < length_test:
+        #     if 0 == y_rf_test.values[jtem]:
+        #         LABEL0 += 1
+        #     elif 1 == y_rf_test.values[jtem]:
+        #         LABEL1 += 1
+        #     elif 2 == y_rf_test.values[jtem]:
+        #         LABEL2 += 1
+        #     elif 3 == y_rf_test.values[jtem]:
+        #         LABEL3 += 1
+        #     elif 4 == y_rf_test.values[jtem]:
+        #         LABEL4 += 1
+        #     else:
+        #         LABEL5 += 1
+        #     jtem += 1
     # print(LabelSum_i[b])  # 测试集中每一类的样本数量
     # b += 1
 
@@ -125,7 +140,7 @@ def test_set(filepath):
 
     filename = f"./media/data/ClassifyResults.json"
     with open(filename, 'w') as json_file:
-        json.dump(dictionary, json_file, indent=4)
+        json.dump(dictionary, json_file)
 
     return macro_P, macro_R, macro_F1, LABEL0, LABEL1, LABEL2, LABEL3, LABEL4, LABEL5, precision_i, recall_i, dictionary
 
